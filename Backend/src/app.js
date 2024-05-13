@@ -7,7 +7,7 @@ const app = express();
 
 app.use(morgan('dev'));
 
-//Permite a express entender los request json
+//Permite a express entender los request body en el formato json
 app.use(express.json());
 
 //Todas la rutas del backend inician con /api
