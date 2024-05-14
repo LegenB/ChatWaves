@@ -2,3 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face{
+  font-family: "Saiba";
+  src: url('Components/assets/fonts/Saiba/SAIBA-45.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: "Saiba-Outline";
+  src: url('Components/assets/fonts/Saiba-outline/SAIBA-45-Outline.ttf') format('truetype');
+}

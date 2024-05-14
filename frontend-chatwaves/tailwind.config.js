@@ -5,6 +5,12 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      'jacquard': ['"Jacquard 12"', 'system-ui'],
+      'Saiba' : ['Saiba', 'Regular'],
+      'Saiba-Outline' : ['Saiba-Outline', 'Regular']
+    },
+
   },
   plugins: [],
 }
