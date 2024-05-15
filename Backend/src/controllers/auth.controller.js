@@ -1,53 +1,93 @@
 import { Conectclient } from "../DataBase.js";
-import {EmailExist} from "../middlewares/auth.register.js"
+import {HowEmailExist} from "../middlewares/auth.register.js"
+import {ThisEmailExist} from "../middlewares/auth.loginEmail.js"
+import {LoginUser} from "../middlewares/auth.login.js"
 import bcrypt from "bcryptjs";
+import { CreateToken } from "../libs/jwt.js";
 
 export const register = async (req, res) => {
     // Se extraen los datos que son mandados por el frontend
     //Chatglobal es id debe ser 001
-    const {nombre, email, password, fecha_nacimiento, estado} = req.body
-
-
+    const {nombre, email, password, fecha_nacimiento} = req.body
+    
     try {
-        const emailExists = await EmailExist(email);
-        
-
-        if (emailExists[0]) {
+        const emailExists = await HowEmailExist(email);
+    
+        if (emailExists[0]) { // Si el Email existe tirar un error
            
             res.status(400).send("El correo electrónico ya está registrado");
         } 
-        else {
-            
-
+        else { 
+    
             try {
-                //Generar un iD unico
+                //Generar un ID unico
                 const NombreID = (nombre.substr(0,3)).toUpperCase()
-                console.log(NombreID)
-                const newID = (emailExists[1] + 1 +`_'${NombreID}'`)
+                const newID = (emailExists[1] + 1 +`_${NombreID}`)
+                //console.log(newID)
 
-                // Encriptar contraseña
-                console.log(newID)
+                // Encriptar contraseña     
                 const passwordHashs = await bcrypt.hash(password,10);
 
+                // Insertar en el nuevo usuario a la Base de Datos
                 const response = await Conectclient.execute(
                 `INSERT INTO usuario (id_usuario, nombre, email, password, fecha_nacimiento, estado, chatglobal_id_chat_global) 
-                VALUES ('${newID}', '${nombre}', '${email}', '${passwordHashs}', '${fecha_nacimiento}', '${estado}', '001')`)
+                VALUES ('${newID}', '${nombre}', '${email}', '${passwordHashs}', '${fecha_nacimiento}','Hi, I am new to ChatWaves', '001')`)
+                
+                // Llamamos la Promesa Crear token
+                const token = await CreateToken({id: newID})
+                res.cookie('token', token);
+                
                 //console.log(response)
-                res.send("Registrado")
-              
+                res.json({
+                    ID: newID,
+                    nombre: nombre,
+                    email: email
+                })     
             } 
-             catch (error)  {
-                console.error("Error al ejecutar la consulta:", error);
-                res.send("Error el id ya existe ")
+            catch (error)  {
+                res.status(500).json({message: error.message});
+            
             }
         }
-        
-    } catch (error) {
+
+    } 
+    catch (error) {
         console.error("Error:", error)
     } 
     
 }
 
 
-export const login = (req, res) => res.send("login");
+export const login = async (req, res) => {
 
+    try {
+        // Se extraen los datos que son mandados por el frontend
+        const { email, password} = req.body
+
+        // Validar Que el correo existe
+        const EmEx = await ThisEmailExist(email)
+        if (!EmEx) { // Si no existe
+            return res.status(400).json({message: "User not Found "});
+        }
+       
+        // Validar Contraseña
+        const UserLogin = await LoginUser(email, password)
+        if (!UserLogin) { // Si Contraseña es incorrecta
+            return res.status(400).json({message: "Password incorrect"});
+        }
+        console.log(UserLogin)
+
+        const token = await CreateToken({id: UserLogin.id_usuario})
+        res.cookie("token", token)
+        res.json({
+            ID: UserLogin.id_usuario,
+            nombre: UserLogin.nombre,
+            email: UserLogin.email
+        });
+
+    } 
+    catch (error) {
+        console.error("Error:", error)
+    } 
+    
+}
