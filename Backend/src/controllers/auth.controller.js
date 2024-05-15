@@ -1,7 +1,6 @@
 import { Conectclient } from "../DataBase.js";
-import {HowEmailExist} from "../middlewares/auth.register.js"
-import {ThisEmailExist} from "../middlewares/auth.loginEmail.js"
-import {LoginUser} from "../middlewares/auth.login.js"
+import { LoginUser } from "../libs/loginUser.js";
+import { ThisEmailExist, HowEmailExist } from "../libs/usertEmail.js";
 import bcrypt from "bcryptjs";
 import { CreateToken } from "../libs/jwt.js";
 
@@ -93,9 +92,18 @@ export const login = async (req, res) => {
 }
 
 
-export const logout = async (req, res) => {
+export const logout = (req, res) => {
+    // vaciamos el token 
     res.cookie('token',"",{
         expires: new Date(0)
     })
+
+    // Devolver el token vacio
     return res.sendStatus(200);
+}
+
+export const profile = (req, res) =>{
+    console.log("perfil")
+
+    return res.sendStatus(200)
 }

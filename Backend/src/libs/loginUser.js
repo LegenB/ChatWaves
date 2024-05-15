@@ -13,10 +13,10 @@ export async function  LoginUser(Email, password) {
     const ClientPass = ClientEmail.rows[0].password
     const isMatch = await bcrypt.compare(password, ClientPass); // Comparar contraseñas encriptadas
 
-    if (!isMatch){  // si es correcta devuelve Falso
+    if (!isMatch){  // Si la contraseña es incorrecta devuelve un bool en Falso
         return isMatch
     }
-    else{           // Si es correcta devuelve los datos
+    else{           // Si la contraseña es correcte devuelve los datos del usuario
         const Userlog = ClientEmail.rows[0]; // obtener datos para crear el token de autenticacion
         return Userlog 
     }
