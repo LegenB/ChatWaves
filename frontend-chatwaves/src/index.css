@@ -11,3 +11,13 @@
   font-family: "Saiba-Outline";
   src: url('Components/assets/fonts/Saiba-outline/SAIBA-45-Outline.ttf') format('truetype');
 }
+
+@font-face {
+  font-family: "Neuron";
+  src: url('Components/assets/fonts/Neuron/Neuron.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: "Neuron-Italic";
+  src: url('Components/assets/fonts/Neuron-Italic/Neuron-Italic.ttf') format('truetype');
+}
