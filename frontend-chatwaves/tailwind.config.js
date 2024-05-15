@@ -8,7 +8,9 @@ module.exports = {
     fontFamily: {
       'jacquard': ['"Jacquard 12"', 'system-ui'],
       'Saiba' : ['Saiba', 'Regular'],
-      'Saiba-Outline' : ['Saiba-Outline', 'Regular']
+      'Saiba-Outline' : ['Saiba-Outline', 'Regular'],
+      'Neuron': ['Neuron', 'Regular'],
+      'Neuron-Italic': ['Neuron-Italic', 'Regular']
     },
 
   },
