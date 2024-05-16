@@ -4,28 +4,31 @@
 
 @font-face{
   font-family: "Saiba";
-  src: url('Components/assets/fonts/Saiba/SAIBA-45.ttf') format('truetype');
+  src: url('Asset/Fonts/Saiba/SAIBA-45.ttf') format('truetype');
 }
 
 @font-face {
   font-family: "Saiba-Outline";
-  src: url('Components/assets/fonts/Saiba-outline/SAIBA-45-Outline.ttf') format('truetype');
+  src: url('Asset/Fonts/Saiba-outline/SAIBA-45-Outline.ttf') format('truetype');
 }
 
 @font-face {
   font-family: "Neuron";
-  src: url('Components/assets/fonts/Neuron/Neuron.ttf') format('truetype');
+  src: url('Asset/Fonts/Neuron/Neuron.ttf') format('truetype');
 }
 
 @font-face {
   font-family: "Neuron-Italic";
-  src: url('Components/assets/fonts/Neuron-Italic/Neuron-Italic.ttf') format('truetype');
+  src: url('Asset/Fonts/Neuron-Italic/Neuron-Italic.ttf') format('truetype');
 }
 
 .button_login{
   @apply w-6/12 h-10 text-xl font-Saiba mt-28 rounded-md border-2 bg-transparent border-[rgb(231,83,245)] shadow-md shadow-[rgb(231,83,245)] hover:bg-[rgb(231,83,245,0.85)] hover:drop-shadow-[0_0px_35px_rgba(236,72,153,1)] transition
 }
 
+#parpadeo_azul {
+    animation: parpadeo 5s steps(100) infinite
+  }
 @keyframes parpadeo {
   0% {
       opacity: 0
@@ -81,11 +84,11 @@
       opacity: 0
   }
 }
-#parpadeo_azul {
-  animation: parpadeo 5s steps(100) infinite
-}
 
 
+#parpadeo_rosa {
+    animation: parpadeo_rosa 5s steps(100) infinite
+  }
 @keyframes parpadeo_rosa {
   0% {
       opacity: 0
@@ -140,7 +143,4 @@
   to {
       opacity: 0
   }
-}
-#parpadeo_rosa {
-  animation: parpadeo_rosa 5s steps(100) infinite
 }
