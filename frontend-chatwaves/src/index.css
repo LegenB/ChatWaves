@@ -21,3 +21,126 @@
   font-family: "Neuron-Italic";
   src: url('Components/assets/fonts/Neuron-Italic/Neuron-Italic.ttf') format('truetype');
 }
+
+.button_login{
+  @apply w-6/12 h-10 text-xl font-Saiba mt-28 rounded-md border-2 bg-transparent border-[rgb(231,83,245)] shadow-md shadow-[rgb(231,83,245)] hover:bg-[rgb(231,83,245,0.85)] hover:drop-shadow-[0_0px_35px_rgba(236,72,153,1)] transition
+}
+
+@keyframes parpadeo {
+  0% {
+      opacity: 0
+  }
+
+  2% {
+      opacity: 1;
+      color: rgb(34, 235, 242);
+
+  }
+
+  5% {
+      opacity: 0
+  }
+
+  6% {
+      opacity: 1;
+      color: rgb(34, 235, 242);
+
+  }
+
+  8% {
+      opacity: 0
+  }
+
+  81%,9% {
+      opacity: 1;
+      color: rgb(34, 235, 242);
+
+  }
+
+  82% {
+      opacity: 0
+  }
+
+  83%,91% {
+      opacity: 1;
+      color: rgb(34, 235, 242);
+
+  }
+
+  92% {
+      opacity: 0
+  }
+
+  93%,99% {
+      opacity: 1;
+      color: rgb(34, 235, 242);
+
+  }
+
+  to {
+      opacity: 0
+  }
+}
+#parpadeo_azul {
+  animation: parpadeo 5s steps(100) infinite
+}
+
+
+@keyframes parpadeo_rosa {
+  0% {
+      opacity: 0
+  }
+
+  2% {
+      opacity: 1;
+      color: rgb(231, 83, 245);
+
+  }
+
+  5% {
+      opacity: 0
+  }
+
+  6% {
+      opacity: 1;
+      color: rgb(231, 83, 245);
+
+  }
+
+  8% {
+      opacity: 0
+  }
+
+  81%,9% {
+      opacity: 1;
+      color: rgb(231, 83, 245);
+
+  }
+
+  82% {
+      opacity: 0
+  }
+
+  83%,91% {
+      opacity: 1;
+      color: rgb(231, 83, 245);
+
+  }
+
+  92% {
+      opacity: 0
+  }
+
+  93%,99% {
+      opacity: 1;
+      color: rgb(231, 83, 245);
+
+  }
+
+  to {
+      opacity: 0
+  }
+}
+#parpadeo_rosa {
+  animation: parpadeo_rosa 5s steps(100) infinite
+}

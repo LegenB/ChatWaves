@@ -4,7 +4,11 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'cyberpunk' : 'url("https://i.ibb.co/CMZ8zt5/Fondo-Min.png")'
+      }
+    },
     fontFamily: {
       'jacquard': ['"Jacquard 12"', 'system-ui'],
       'Saiba' : ['Saiba', 'Regular'],
