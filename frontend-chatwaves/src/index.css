@@ -23,7 +23,7 @@
 }
 
 .button_login{
-  @apply w-6/12 h-10 text-xl font-Saiba mt-28 rounded-md border-2 bg-transparent border-[rgb(231,83,245)] shadow-md shadow-[rgb(231,83,245)] hover:bg-[rgb(231,83,245,0.85)] hover:drop-shadow-[0_0px_35px_rgba(236,72,153,1)] transition
+  @apply w-6/12 h-10 text-xl text-white font-Saiba mt-16 rounded-md border-2 bg-transparent border-[rgb(231,83,245)] shadow-md shadow-[rgb(231,83,245)] hover:bg-[rgb(231,83,245,0.85)] hover:drop-shadow-[0_0px_35px_rgba(236,72,153,1)] transition
 }
 
 
