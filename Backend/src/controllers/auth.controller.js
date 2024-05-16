@@ -1,5 +1,5 @@
 import { Conectclient } from "../DataBase.js";
-import { LoginUser } from "../libs/loginUser.js";
+import { LoginUser, GetUserByID } from "../libs/loginUser.js";
 import { ThisEmailExist, HowEmailExist } from "../libs/usertEmail.js";
 import bcrypt from "bcryptjs";
 import { CreateToken } from "../libs/jwt.js";
@@ -102,8 +102,13 @@ export const logout = (req, res) => {
     return res.sendStatus(200);
 }
 
-export const profile = (req, res) =>{
-    console.log("perfil")
+export const profile = async (req, res) =>{
+    const user = await GetUserByID(req.user.id);
 
-    return res.sendStatus(200)
+    res.json({
+        ID: user.id_usuario,
+        nombre: user.nombre,
+        email: user.email
+    })   
+    
 }
