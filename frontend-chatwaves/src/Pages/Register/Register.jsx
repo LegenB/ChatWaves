@@ -1,5 +1,5 @@
 import React from 'react'
-import bg01 from "../../img/UI_Elemnts/border_01.png";
+
 
 
 
@@ -25,6 +25,8 @@ export const Register = () => {
                             <span className=' font-Saiba'>e</span>
                             <span className=' font-Saiba'>r</span> 
                         </h1>
+
+
        
                     </div>
                 </div>
