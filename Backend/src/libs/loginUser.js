@@ -22,3 +22,18 @@ export async function  LoginUser(Email, password) {
     }
 
 }
+
+export async function  GetUserByID(id) {
+    
+    //Consultar en la base de datos por el email y contraseña del usuario
+    const ClientEmail = await Conectclient.execute(
+        `SELECT id_usuario, nombre, email FROM usuario
+        WHERE id_usuario = '${id}'`
+    );
+
+
+    const Userlog = ClientEmail.rows[0]; // obtener datos para crear el token de autenticacion
+    return Userlog 
+
+
+}
