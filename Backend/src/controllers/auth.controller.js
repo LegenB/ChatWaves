@@ -14,7 +14,7 @@ export const register = async (req, res) => {
     
         if (emailExists[0]) { // Si el Email existe tirar un error
            
-            res.status(400).send("El correo electrónico ya está registrado");
+            res.status(400).json({ message: "El correo electrónico ya está registrado" });
         } 
         else { 
     
@@ -51,10 +51,12 @@ export const register = async (req, res) => {
 
     } 
     catch (error) {
-        console.error("Error:", error)
+        return res.status(500).json({ message: error.message });
     } 
     
 }
+
+
 
 
 export const login = async (req, res) => {
