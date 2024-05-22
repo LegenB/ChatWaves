@@ -4,6 +4,8 @@ import { App } from "../App";
 import { Register } from "../Pages/Register/Register";
 import { LoginForm } from "../Pages/Login/LoginForm";
 import { Home } from "../Pages/Home/Home";
+import { Chat } from "../Pages/Chat/Chat";
+
 
 
 
@@ -18,6 +20,7 @@ export const getRoutes = () => createBrowserRouter([
             { path: "/", element: <Home /> },
             { path: "/register", element: <Register /> },
             { path: "/login", element: <LoginForm/> },
+            { path: "/chat", element: <Chat/> },
  
         ]
     }

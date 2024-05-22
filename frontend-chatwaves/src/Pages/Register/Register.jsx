@@ -29,7 +29,7 @@ export const Register = () => {
     
         if (Object.keys(validationError).length > 0) {
             
-            validationError.form = 'Campos Vacios';
+            validationError.form = 'Oops... we have Empty Fields!';
             setError(validationError);
           
             return;
@@ -160,7 +160,7 @@ export const Register = () => {
                                     
                         </form>
                         <div className=' flex justify-center items-center  w-full mt-5'>
-                            <a href="/login" className='text-gray-200 hover:text-cyber-blue drop-shadow-xl  hover:scale-105 transition'> I have an account</a>
+                            <a href="/login" className='text-gray-200/80 hover:text-cyber-blue drop-shadow-xl  hover:scale-105 transition'> I have an account</a>
 
                         </div>               
                     </div>

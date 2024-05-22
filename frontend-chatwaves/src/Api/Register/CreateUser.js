@@ -1,6 +1,6 @@
 
 export const createUser = async (formState) => {
-    console.log('Test')
+    
     try {
         const response = await fetch('http://localhost:4000/api/register', {
             method: 'POST',
@@ -9,7 +9,7 @@ export const createUser = async (formState) => {
             },
             body: JSON.stringify(formState),
         });
-        console.log('Test')
+        
         const data = await response.json();
         if (!response.ok) {
             throw new Error(data.message || 'Error al registrar el usuario');
