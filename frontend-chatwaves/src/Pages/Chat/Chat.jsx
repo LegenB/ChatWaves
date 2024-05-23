@@ -15,7 +15,7 @@ export const Chat = () => {
                 <div className='h-[700px] w-[400px] border bg-slate-600 flex flex-col'>
 
                     <div className='w-full bg-slate-700 h-9 flex justify-center items-center'>
-                        <h1 className='text-white'>Chat Global test</h1>
+                        <h1 className='text-white'>Chat global</h1>
                     </div>
 
                     <div className='w-full bg-slate-500 flex-grow p-2'>
@@ -27,6 +27,7 @@ export const Chat = () => {
                     </div>
 
                     <div className='w-full h-10'>
+                        <button>IA</button>
                         <input type="text" placeholder='Escribe algo ...' className='w-full h-full p-4 '/>
                     </div>
 
