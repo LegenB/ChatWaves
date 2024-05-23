@@ -67,7 +67,7 @@ export const login = async (req, res) => {
 
         // Validar Que el correo existe
         const EmEx = await ThisEmailExist(email)
-        if (!EmEx) { // Si no existe
+        if (!EmEx) { // Si el correo no existe 
             return res.status(400).json({message: "User not Found "});
         }
        
@@ -76,7 +76,7 @@ export const login = async (req, res) => {
         if (!UserLogin) { // Si Contraseña es incorrecta
             return res.status(400).json({message: "Password incorrect"});
         }
-        console.log(UserLogin)
+       
 
         const token = await CreateToken({id: UserLogin.id_usuario})
         res.cookie("token", token)
@@ -88,7 +88,7 @@ export const login = async (req, res) => {
 
     } 
     catch (error) {
-        console.error("Error:", error)
+        res.status(500).json({message: error.message});
     } 
     
 }
