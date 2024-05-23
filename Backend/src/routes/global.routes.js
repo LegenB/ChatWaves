@@ -1,14 +1,14 @@
 import {Router} from 'express';
 import { authRequired } from '../middlewares/validateToken.js';
-import { CreateMessage, GetMessages } from "../controllers/global.controller.js";
+import { CreateMessage, GetAllMessages } from "../controllers/global.controller.js";
 
 
 
 const router = Router();
 
 
-router.post("/chat", CreateMessage);
-
+router.post("/chat/send",authRequired, CreateMessage);
+router.get("/chat/message", authRequired,GetAllMessages);
 
 
 
