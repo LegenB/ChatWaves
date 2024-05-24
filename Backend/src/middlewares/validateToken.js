@@ -9,7 +9,7 @@ import {TOKEN_SECRET} from "../config.js";
 export const authRequired = (req, res, next) =>{
     console.log('Validing token...')
     const {token} = req.cookies
-   
+    console.log({token})
 
     if (!token) {
         return res.status(401).json({message : "No token, authorization denied"})

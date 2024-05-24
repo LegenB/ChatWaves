@@ -1,18 +1,27 @@
-import React, { useState } from 'react';
-
+import React, { useEffect, useState } from 'react';
 import { useForm } from "../../../Hook/useForm";
-import { createUser } from "../../../Api/Register/CreateUser";
+import { useAuth } from "../../../context/Auth.context";
+import { useNavigate } from "react-router-dom";
 
 export const RegisterForm = () => {
 
-    const [error, setError] = useState({})
-
+    const [error, setError] = useState({});
+    const { signup, isAuthenticated } = useAuth();
+    const navigate = useNavigate();
     const {formState,onInputChange, nombre, email, password, fecha_nacimiento} = useForm({
         nombre: '',
         email: '',
         password: '',
         fecha_nacimiento:''
-    })
+    });
+
+    // Navegar a '/chat' en caso de que este autenticado
+    useEffect(() => {
+        if (isAuthenticated) {
+            navigate('/chat')
+        }
+    }, [isAuthenticated])
+    
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -35,8 +44,7 @@ export const RegisterForm = () => {
         }
         
         try {
-            const data = await createUser(formState);
-            console.log('Usuario registrado con éxito', data);
+            signup(formState)
             setError({});
 
         } catch (error) {

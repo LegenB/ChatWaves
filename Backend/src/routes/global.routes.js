@@ -8,7 +8,7 @@ const router = Router();
 
 
 router.post("/chat/send",authRequired, CreateMessage);
-router.get("/chat/message", authRequired,GetAllMessages);
+router.get("/chat/message",GetAllMessages);
 
 
 

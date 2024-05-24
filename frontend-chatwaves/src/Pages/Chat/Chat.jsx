@@ -1,10 +1,34 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Message } from "./components/Message";
+import { GetGlobalMessages } from "../../Api/Chat/getGlobalMessages";
+import { AuthContext } from '../../context/Auth.context';
+import { useContext } from 'react';
 
 
 
 export const Chat = () => {
+    const [messages, setMessages] = useState([])
+    const { user } = useContext(AuthContext);
 
+
+    useEffect(() => {
+      
+        console.log(user)
+        try {
+            GetGlobalMessages()
+                .then( messages =>{
+                    console.log(messages)
+                    setMessages(messages)
+                });
+        } 
+        catch (error) {
+            
+        }
+    }, [ ])
+
+
+    
+    
 
     return (
 
@@ -20,14 +44,18 @@ export const Chat = () => {
 
                     <div className='w-full bg-slate-500 flex-grow p-2'>
                         
-                        <Message name={'Byron'} hour={'20:52'} content={'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat sunt, eos exercitationem enim nostrum nemo non a laboriosam numquam quis eum atque, laborum quasi. Fugiat eveniet itaque corrupti perspiciatis suscipit?'}/>
-                        <Message name={'Byron'} hour={'20:53'} content={'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat sunt, eos exercitationem enim nostrum nemo non a laboriosam numquam quis eum atque, laborum quasi. Fugiat eveniet itaque corrupti perspiciatis suscipit?'}/>
-                        <Message name={'Yato'} hour={'20:54'} content={'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat sunt, eos exercitationem enim nostrum nemo non a laboriosam numquam quis eum atque, laborum quasi. Fugiat eveniet itaque corrupti perspiciatis suscipit?'}/>
+                        {messages.map( (M) =>(
+                            
+                            <Message key={M.id_mesaje} name={M.usuario_id_usuario} hour={M.fecha_envio} content={M.contenido}/>
+                            
+                        
+                        ))}
+                        
                       
                     </div>
 
                     <div className='w-full h-10'>
-                        <button>IA</button>
+                        
                         <input type="text" placeholder='Escribe algo ...' className='w-full h-full p-4 '/>
                     </div>
 

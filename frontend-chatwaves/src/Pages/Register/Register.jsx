@@ -6,9 +6,6 @@ import { RegisterForm } from "./Components/RegisterForm";
 export const Register = () => {
 
 
-
-  
-
     return (
         <div className='flex justify-center items-center h-screen w-screen'>
             <div className='absolute inset-0 z-0'>

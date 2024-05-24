@@ -37,7 +37,7 @@ export const register = async (req, res) => {
                 res.cookie('token', token);
                 
                 //console.log(response)
-                res.json({
+                res.status(200).json({
                     ID: newID,
                     nombre: nombre,
                     email: email
@@ -80,7 +80,7 @@ export const login = async (req, res) => {
 
         const token = await CreateToken({id: UserLogin.id_usuario})
         res.cookie("token", token)
-        res.json({
+        res.status(200).json({
             ID: UserLogin.id_usuario,
             nombre: UserLogin.nombre,
             email: UserLogin.email
