@@ -18,10 +18,9 @@ export const useAuth = () =>{
 
 export const AuthProvider = ({children}) =>{
 
-    // Guardar el estado del usuario para llamarlo donde se necesite
-    const [user, setUser] = useState(null);
-    // Saber si esta Autenticado
-    const [isAuthenticated, setIsAuthenticated] = useState(false)
+    
+    const [user, setUser] = useState(null);                       // Guardar el estado del usuario para llamarlo donde se necesite
+    const [isAuthenticated, setIsAuthenticated] = useState(false) // Saber si esta Autenticado
 
     const signup = async (user) =>{
         try {
